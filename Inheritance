@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Inheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Car myCar = new Car();
+            myCar.Make = "BMW";
+            myCar.Model = "745li";
+            myCar.Color = "Black";
+            myCar.Year = 2005;
+
+            printVehicleDetails(myCar);
+
+            Truck myTruck = new Truck();
+
+            myTruck.Make = "Ford"; //All the same properties of the car class are inherited by Truck
+            myTruck.Model = "F950";
+            myTruck.Year = 2006;
+            myTruck.Color = "Black";
+            myTruck.TowingCapacity = 1200;
+            printVehicleDetails(myTruck);
+
+            Console.ReadLine();
+        }
+
+        private static void printVehicleDetails(Vehicle vehicle)
+        {
+            Console.WriteLine("Here are the vehicle's details: {0}", vehicle.FormatMe());
+        }
+
+        abstract class Vehicle
+        {
+            public string Make { get; set; }
+            public string Model { get; set; }
+            public int Year { get; set; }
+            public string Color { get; set; }
+
+            public abstract string FormatMe(); //Has no implementation. Cannot create an object of an abstract class
+                                               // Must have an implementation of FormatMe if you are to inherit from Vehicle class
+        }
+
+        class Car : Vehicle
+        {
+
+            public override string FormatMe() // Virtual means its okay to override, but it has a basic implementation
+            {                                 // You have to change the method, it does not have an implemenation to use
+                return String.Format("{0} - {1} - {2} - {3}",
+                this.Make,
+                this.Model,
+                this.Year,
+                this.Color);
+            }
+            
+        }
+
+        class Truck : Vehicle   // Overriding of the car class can be used 
+        {
+            public int TowingCapacity { get; set; } 
+
+            public override string FormatMe()
+            {
+                return String.Format("{0} - {1} - {2} Towing units",
+                this.Make,
+                this.Model,
+                this.TowingCapacity);
+            }
+
+        }
+
+
+    }
+}
