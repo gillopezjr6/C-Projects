@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Strings
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // The backslash is an escape character that is used to produce other special characters and commands
+            // string myString = "Go to your c:\\ drive"; // Escape character used for the "\"
+
+            // How we print a double quotation mark. Use the backslash
+            // String myString = "My \"so called\" life";
+            //String myString = "What if I need a \n new line?";
+
+            // String myString = string.Format("{0}!", "Bonzai"); // Tells the string.format method to replace it with Bonzai
+            // String myString = string.Format("Make: {0} (Model: {1})", "BMW", "760li"); // Make is associated with BMW within the parentheses. Index{1} is associated with 760li
+            // The boilerplate(string) is "Make: {0} (Model: {1})" The arguments follow this
+            // String myString = string.Format("{0:C}", 123.45);    // Currency formatting
+            // String myString = string.Format("{0:N}", 123456789); // Numbers with parentheses and two decimal places
+            // String myString = string.Format("{0:P}", .123); 
+            // String myString = string.Format("Phone Number: {0:(###) ###-####}", 1234567890); 
+
+           /*
+            String myString = "";
+
+            for (int i = 0; i < 100; i++) // Press tab twice for the code snippet
+            {
+                // myString = myString + "--" + i.ToString();
+                myString += "--" + i.ToString();
+            }
+            */
+
+            /*
+            StringBuilder myString = new StringBuilder();
+            
+            for (int i = 0; i < 100; i++)
+            {
+                myString.Append("--");
+                myString.Append(i);
+            }
+            */
+
+            string myString = (" That summer we took threes across the board ");
+
+            //myString = myString.Substring(5, 14);
+            // myString = myString.ToUpper();
+            //  myString = myString.Replace(" ", "--");
+            myString = String.Format("Length before: {0} -- After: {1}", 
+                myString.Length, 
+                myString.Trim().Length);
+
+            Console.WriteLine(myString.ToString());
+            Console.ReadLine();
+        }
+    }
+}
